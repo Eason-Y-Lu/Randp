@@ -83,23 +83,28 @@ namespace binTree {
 
     void binTree::insert(binTree *root) {
         if (this->value < root->value) {
-            insertHelper(root->left);
+            insertHelper(root->left, root);
         } else if (this->value > root->value) {
-            insertHelper(root->right);
+            insertHelper(root->right, root);
         } else {
             throw std::exception();
         }
     }
 
-    void binTree::insertHelper(binTree *currentNode) {
+    void binTree::insertHelper(binTree *currentNode, binTree *parentNode) {
         if (currentNode == nullptr) {
-            this->parent = currentNode;
+            this->parent = parentNode;
+            if(this->value < parentNode->value){
+                parentNode->left = this;
+            }else{
+                parentNode->right = this;
+            }
             return;
         }
         if (this->value < currentNode->value) {
-            insertHelper(currentNode->left);
+            insertHelper(currentNode->left, currentNode);
         } else if (this->value > currentNode->value) {
-            insertHelper(currentNode->right);
+            insertHelper(currentNode->right, currentNode);
         } else {
             throw std::exception();
         }

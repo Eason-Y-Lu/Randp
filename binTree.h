@@ -27,7 +27,7 @@ namespace binTree {
         binTree* right;
         int value;
         static void toVectorHelper(std::vector<std::vector<binTree*>>& currentVBinTree);
-        void insertHelper(binTree *currentNode);
+        void insertHelper(binTree *currentNode, binTree *parentNode);
     };
 
 } // binTree
