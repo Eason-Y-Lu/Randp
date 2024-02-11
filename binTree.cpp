@@ -65,6 +65,7 @@ namespace binTree {
                 toVectorHelper(returnBinTree);
             }
         }
+        return returnBinTree;
     }
 
     void binTree::toVectorHelper(std::vector<std::vector<binTree *>> &currentVBinTree) {
