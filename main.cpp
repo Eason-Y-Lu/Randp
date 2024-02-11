@@ -2,8 +2,8 @@
 #include "randArray.h"
 #include "binTree.h"
 
-int main() {
-    const int iter = 10000;
+int main(int argc = 10000, [[maybe_unused]] char *argv[] = nullptr) {
+    const int iter = argc;
     long long totalDepth = 0;
     for (int i = 0; i < iter; i++) {
         if (i % 1000 == 0) {
