@@ -1,9 +1,12 @@
 #include <iostream>
 #include "binTree.h"
+
 int main() {
-    binTree::binTree root(1, nullptr, nullptr, nullptr);
-    binTree::binTree node(2, nullptr, nullptr, nullptr);
-    node.insert(&root);
-    std::cout << node.getParent() << "\n" << root.getLeft()<<" "<<root.getRight();
+    auto *root = new binTree::binTree(1, nullptr, nullptr, nullptr);
+    for (int i = 2; i < 10000; i++) {
+        auto *tempnode = new binTree::binTree(i, nullptr, nullptr, nullptr);
+        tempnode->insert(root);
+    }
+    return 0;
 
 }
