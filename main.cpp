@@ -3,8 +3,9 @@
 #include "binTree.h"
 
 int main() {
+    const int iter = 10000;
     long long totalDepth = 0;
-    for (int i = 0; i < 10000000; i++) {
+    for (int i = 0; i < iter; i++) {
         if (i % 1000 == 0) {
             std::cout << i << "\n";
         }
@@ -23,7 +24,8 @@ int main() {
         }
     }
     std::cout << totalDepth << "\n";
-    std::cout << totalDepth / 10000000 << "\n";
+    double avg = totalDepth / iter;
+    std::cout << avg << "\n";
 
     return 0;
 }
