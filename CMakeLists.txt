@@ -5,4 +5,6 @@ set(CMAKE_CXX_STANDARD 23)
 
 add_executable(Randp main.cpp
         binTree.cpp
-        binTree.h)
+        binTree.h
+        randArray.cpp
+        randArray.h)
