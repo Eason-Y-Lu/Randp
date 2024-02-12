@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
             }
         }
     }
-    std::printf("Number of Tree created: %d, total depth of those tree: %d, average depth of those tree: %f", iter,
+    std::printf("Number of Tree created: %d, total depth of those tree: %d, average depth of those tree: %f \n", iter,
                 totalDepth, (float) totalDepth / (float) iter);
 
     return 0;
