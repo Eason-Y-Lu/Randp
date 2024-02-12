@@ -21,10 +21,10 @@ int main(int argc, char *argv[]) {
             std::printf("Currently on: %d, with total depth: %d, current avg. depth: %f \n", i, totalDepth,
                         (double) totalDepth / (double) i);
         }
-        auto *mainArr = new randArray::randArray(10000);
-        auto *root = new binTree::binTree(mainArr->nextNum(), nullptr, nullptr, nullptr);
+        randArray::randArray mainArr(10000);
+        auto *root = new binTree::binTree(mainArr.nextNum(), nullptr, nullptr, nullptr);
         for (int l = 1; l < 10000; l++) {
-            auto *tempNode = new binTree::binTree(mainArr->nextNum(), nullptr, nullptr, nullptr);
+            auto *tempNode = new binTree::binTree(mainArr.nextNum(), nullptr, nullptr, nullptr);
             tempNode->insert(root);
         }
         std::vector<std::vector<binTree::binTree *>> vNum = root->toVector();
@@ -34,7 +34,6 @@ int main(int argc, char *argv[]) {
                 delete j;
             }
         }
-        delete mainArr;
     }
     std::printf("Number of Tree created: %d, total depth of those tree: %d, average depth of those tree: %f \n", iter,
                 totalDepth, (float) totalDepth / (float) iter);

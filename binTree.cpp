@@ -47,8 +47,6 @@ namespace binTree {
         this->left = newLeft;
     }
 
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "modernize-loop-convert"
 
     std::vector<std::vector<binTree *>> binTree::toVector() {
         std::vector<std::vector<binTree *>> returnBinTree{std::vector<binTree *>{this}};
@@ -69,18 +67,17 @@ namespace binTree {
 
     void binTree::toVectorHelper(std::vector<std::vector<binTree *>> &currentVBinTree) {
         std::vector<binTree *> temp{};
-        for (int i = 0; i < currentVBinTree.back().size(); i++) {
-            if (currentVBinTree.back().at(i)->left != nullptr) {
-                temp.push_back(currentVBinTree.back().at(i)->left);
+        for (auto &i: currentVBinTree.back()) {
+            if (i->left != nullptr) {
+                temp.push_back(i->left);
             }
-            if (currentVBinTree.back().at(i)->right != nullptr) {
-                temp.push_back(currentVBinTree.back().at(i)->right);
+            if (i->right != nullptr) {
+                temp.push_back(i->right);
             }
         }
         currentVBinTree.push_back(temp);
     }
 
-#pragma clang diagnostic pop
 
     void binTree::insert(binTree *root) {
         if (this->value < root->value) {
