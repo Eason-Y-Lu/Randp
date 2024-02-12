@@ -11,31 +11,31 @@ int main(int argc, char *argv[]) {
         std::string arg1(argv[1]);
         iter = stoi(arg1);
     } else {
-        throw std::invalid_argument("Only 0 or 1 input.");
+        throw std::invalid_argument("Only accept 0 or 1 input.");
     }
     std::cout << "Target counts: " << iter << "\n";
-    long long totalDepth = 0;
-    for (int i = 0; i < iter; i++) {
+    int totalDepth = 0;
+    for (int i = 1; i <= iter; i++) {
         if (i % 1000 == 0) {
-            std::cout << "Currently on: " << i << "\n";
+            std::printf("Currently on: %d, with total depth: %d, current avg. depth: %f \n", i, totalDepth,
+                        (double) totalDepth / (double) i);
         }
         randArray::randArray mainArr(10000);
         auto *root = new binTree::binTree(mainArr.nextNum(), nullptr, nullptr, nullptr);
-        for (int i = 1; i < 10000; i++) {
+        for (int l = 1; l < 10000; l++) {
             auto *tempNode = new binTree::binTree(mainArr.nextNum(), nullptr, nullptr, nullptr);
             tempNode->insert(root);
         }
         std::vector<std::vector<binTree::binTree *>> vNum = root->toVector();
-        totalDepth = totalDepth + vNum.size() - 1;
-        for (int i = 0; i < vNum.size(); i++) {
-            for (int j = 0; j < vNum.at(i).size(); j++) {
-                delete vNum.at(i).at(j);
+        totalDepth = totalDepth + (int) vNum.size() - 1;
+        for (auto &k: vNum) {
+            for (auto &j: k) {
+                delete j;
             }
         }
     }
-    std::cout << "totalDepth: " << totalDepth << "\n";
-    double avg = totalDepth / iter;
-    std::cout << "averageDepth: " << avg << "\n";
+    std::printf("Number of Tree created: %d, total depth of those tree: %d, average depth of those tree: %f", iter,
+                totalDepth, (float) totalDepth / (float) iter);
 
     return 0;
 }
