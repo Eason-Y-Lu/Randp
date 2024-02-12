@@ -3,6 +3,7 @@
 //
 
 #include "randArray.h"
+#include <iostream>
 #include <algorithm>
 #include <random>
 
@@ -12,14 +13,14 @@ namespace randArray {
         std::random_device randomDevice;
         std::mt19937 r19937(randomDevice());
         array.reserve(endNum);
-        for (int i = 0; i <= endNum; i++) {
+        for (int i = 1; i <= endNum; i++) {
             array.push_back(i);
         }
         std::shuffle(std::begin(array), std::end(array), r19937);
     }
 
     int randArray::nextNum() {
-        if (currentNum + 1 > array.size()) {
+        if (currentNum > array.size()) {
             return 0;
         } else {
             int numRetrun = array.at(currentNum);

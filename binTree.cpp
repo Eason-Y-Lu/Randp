@@ -58,8 +58,8 @@ namespace binTree {
         // 2 3
         // 4 5 6
         //converted to a vector will be <<p1> <p2 p3> <p4 p5 p6>>
-        //depth of such bin tree will be std::vector<std::vector<binTree*>>.size
-        //check if last array is not an array of 0s
+        //depth of such bin tree will be std::vector<std::vector<binTree*>>.size -1
+        //check if last array is not an empty array
         while (!returnBinTree.back().empty()) {
             toVectorHelper(returnBinTree);
         }
