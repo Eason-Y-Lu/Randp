@@ -29,13 +29,18 @@ int main(int argc, char *argv[]) {
         }
         std::vector<std::vector<binTree::binTree *>> vNum = root->toVector();
         totalDepth = totalDepth + (int) vNum.size() - 1;
+        if (i % 500 == 0) {
+            std::printf("\nSnapshot: Currently on: %d, current tree depth: %d; \n", i, (int) vNum.size() - 1);
+            std::cout << "Current tree root value is: " << root->getValue() << ", root's left ptr is: "
+                      << root->getLeft() << ", root's right ptr is: " << root->getRight() << "\n";
+        }
         for (auto &k: vNum) {
             for (auto &j: k) {
                 delete j;
             }
         }
     }
-    std::printf("Number of Tree created: %d, total depth of those tree: %d, average depth of those tree: %f \n", iter,
+    std::printf("Number of Tree created: %d, total depth of those tree: %d, average depth of those tree: %f \n\n", iter,
                 totalDepth, (float) totalDepth / (float) iter);
 
     return 0;
